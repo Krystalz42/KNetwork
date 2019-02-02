@@ -1,0 +1,21 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /Users/alexandreroulin/work/KNetwork
+-- The CXX compiler identification is AppleClang 10.0.0.10001044
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Boost version: 1.68.0
+-- Found the following Boost libraries:
+--   system
+--   program_options
+--   thread
+--   filesystem
+--   chrono
+--   date_time
+--   atomic
+/usr/local/lib/libboost_system-mt.dylib/usr/local/lib/libboost_program_options-mt.dylib/usr/local/lib/libboost_thread-mt.dylib/usr/local/lib/libboost_filesystem-mt.dylib/usr/local/lib/libboost_chrono-mt.dylib/usr/local/lib/libboost_date_time-mt.dylib/usr/local/lib/libboost_atomic-mt.dylib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/alexandreroulin/work/KNetwork

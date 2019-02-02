@@ -1,7 +1,6 @@
 #pragma once
 
 #include <boost/system/error_code.hpp>
-#include "IOTCP.hpp"
 #include "DataTCP.hpp"
 #include <boost/bind.hpp>
 #include "BaseDataType.hpp"
@@ -29,18 +28,19 @@ namespace KNW {
 
 	private:
 
+		void checkError(boost::system::error_code const &error_code);
+
 		void readSocketData(DataTCP::Header header);
 
 		void handleReadHeader(const boost::system::error_code &, size_t);
 
 
-		void handleReadData(DataTCP::Header header,
-							const boost::system::error_code &, size_t);
+		void handleReadData(DataTCP::Header header,const boost::system::error_code &);
 
 		void handleWrite(const boost::system::error_code &, size_t);
 
 		DataTCP &dataTCP_;
-		boost::array<char, eConfig::kMaxBufferSize> buffer_data_;
+		boost::array<char, eConfigTCP::kMaxBufferSize> buffer_data_;
 		tcp::socket socket_;
 		std::function<void(BaseDataType::Header, char *)> callback_;
 	};

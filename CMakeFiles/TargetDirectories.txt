@@ -1,0 +1,3 @@
+/Users/alexandreroulin/work/KNetwork/CMakeFiles/rebuild_cache.dir
+/Users/alexandreroulin/work/KNetwork/CMakeFiles/edit_cache.dir
+/Users/alexandreroulin/work/KNetwork/CMakeFiles/network.dir

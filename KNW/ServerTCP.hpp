@@ -20,14 +20,15 @@
 #include <unordered_map>
 #include <iostream>
 #include "Config.hpp"
+#include "DataTCP.hpp"
 #include "IOTCP.hpp"
+
 
 using boost::asio::ip::tcp;
 
 namespace KNW {
 
 	class ServerTCP;
-	class DataTCP;
 
 	/*********************** ConnectionTCP ************************************/
 
@@ -48,16 +49,31 @@ namespace KNW {
 	public:
 		explicit ServerTCP(unsigned short port);
 
+		size_t getSizeOfConnections() const;
+
 		void accept();
+
+		void accept(std::function<void(size_t)>);
 
 		template<typename T>
 		void addDataType(std::function<void(T)> callback);
 
+		template<typename T, typename H>
+		void addDataType(std::function<void(T)> callback, H);
+
 		template<typename T>
-		void writeDataToOpenConnection(T data);
+		void writeDataToOpenConnections(T data);
+
+		template<typename T>
+		void writeDataToOpenConnection(T data, int index);
+
+		template<typename T, typename H>
+		void writeDataToOpenConnection(T data, int index, H header);
+
+		template<typename T, typename H>
+		void writeDataToOpenConnections(T data, H header);
 
 		virtual ~ServerTCP();
-
 	private:
 
 		void asyncAccept();
@@ -70,7 +86,7 @@ namespace KNW {
 
 		//connection
 		std::vector<std::shared_ptr<ConnectionTCP>> connections;
-
+		std::function<void(size_t)> callbackAccept_;
 		//Data management
 		DataTCP dataTCP_;
 		friend class ConnectionTCP;
@@ -84,18 +100,65 @@ namespace KNW {
 		dataTCP_.addDataType<T>(callback);
 	}
 
+	template<typename T, typename H>
+	void ServerTCP::addDataType(std::function<void(T)> callback, H index) {
+		dataTCP_.addDataType<T, H>(callback, index);
+	}
+
+
 	template<typename T>
-	void ServerTCP::writeDataToOpenConnection(T data) {
-		auto header = DataType<T>::getHeader();
+	void ServerTCP::writeDataToOpenConnections(T data) {
 		assert(dataTCP_.hasType<T>());
+
+		auto header = DataType<T>::getHeader();
+
 		std::string buffer;
-//		std::cout << "writeDataToOpenConnection:" << dataTCP_.getSizeOfType<T>() << std::endl;
 		buffer.append(reinterpret_cast<char *>(&header), sizeof(BaseDataType::Header));
-		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfType<T>());
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header));
+
 		for (auto &connection : connections) {
 			connection->sendData(buffer);
 		}
 	}
+
+	template<typename T, typename H>
+	void ServerTCP::writeDataToOpenConnections(T data, H header) {
+		uint16_t header_ = static_cast<uint16_t >(header);
+		std::string buffer;
+		buffer.append(reinterpret_cast<char *>(&header_), sizeof(BaseDataType::Header));
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header_));
+
+		for (auto &connection : connections) {
+			connection->sendData(buffer);
+		}
+	}
+
+
+	template<typename T>
+	void ServerTCP::writeDataToOpenConnection(T data, int index) {
+		assert(index < connections.size());
+
+		auto header = DataType<T>::getHeader();
+		std::string buffer;
+		buffer.append(reinterpret_cast<char *>(&header), sizeof(BaseDataType::Header));
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header));
+
+		connections[index]->sendData(buffer);
+	}
+
+	template<typename T, typename H>
+	void
+	ServerTCP::writeDataToOpenConnection(T data, int index, H header) {
+		uint16_t header_ = static_cast<uint16_t >(header);
+		assert(index < connections.size());
+//		log_success("%s(%d)", __PRETTY_FUNCTION__, index);
+		std::string buffer;
+		buffer.append(reinterpret_cast<char *>(&header_), sizeof(BaseDataType::Header));
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header_));
+		connections[index]->sendData(buffer);
+	}
+
+
 	/*********************** ClientTCP ************************************/
 
 	class ClientTCP {
@@ -108,10 +171,18 @@ namespace KNW {
 		template<typename T>
 		void addDataType(std::function<void(T)> callback);
 
+		template<typename T, typename H>
+		void addDataType(std::function<void(T)> callback, H);
 		template<typename T>
 		void writeDataToServer(T data);
+		template<typename T>
+		void writeDataToServer(T data, uint16_t);
 
+		~ClientTCP();
+
+		bool isConnect() const;
 	private:
+
 		boost::asio::io_service io;
 		tcp::socket socket_;
 		tcp::resolver resolver;
@@ -133,9 +204,23 @@ namespace KNW {
 //		std::cout << "writeDataToServer:" << dataTCP_.getSizeOfType<T>() << std::endl;
 		std::string buffer;
 		buffer.append(reinterpret_cast<char *>(&header), sizeof(BaseDataType::Header));
-		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfType<T>());
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header));
 		iotcp->writeSocket(buffer);
 	}
+
+	template<typename T>
+	void ClientTCP::writeDataToServer(T data, uint16_t header) {
+		std::string buffer;
+		buffer.append(reinterpret_cast<char *>(&header), sizeof(uint16_t));
+		buffer.append(reinterpret_cast<char *>(&data), dataTCP_.getSizeOfHeader(header));
+		iotcp->writeSocket(buffer);
+	}
+
+	template<typename T, typename H>
+	void ClientTCP::addDataType(std::function<void(T)> callback, H index) {
+		dataTCP_.addDataType<T, H>(callback, index);
+	}
+
 
 }
 

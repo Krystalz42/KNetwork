@@ -1,9 +1,10 @@
 #ifndef NETWORK_DATATCP_HPP
 #define NETWORK_DATATCP_HPP
 
-#include <BaseDataType.hpp>
+#include "BaseDataType.hpp"
 #include <functional>
 #include <vector>
+#include <network/Data.hpp>
 
 namespace KNW {
 
@@ -18,12 +19,14 @@ namespace KNW {
 		template<typename T>
 		void addDataType(std::function<void(T)> callback);
 
+		template<typename T, typename H>
+		void addDataType(std::function<void(T)> callback, H header);
+
 		template<typename T>
 		bool hasType() const;
 
 		void sendDataToCallback(Header header, void *data);
 		size_t getSizeOfHeader(Header header);
-
 		~DataTCP();
 
 	private:
@@ -51,16 +54,10 @@ namespace KNW {
 			std::function<void(T)> function_;
 		};
 
-		template<typename T>
-		size_t getSizeOfType();
-
-		template<typename T>
-		Header getHeaderOfType();
-
 		friend class ServerTCP;
 		friend class ConnectionTCP;
 		friend class ClientTCP;
-
+		bool setHeader_;
 		std::vector<size_t> sizeType;
 		std::vector<std::shared_ptr<AbstractCallback>> callbackType;
 	};
@@ -70,31 +67,37 @@ namespace KNW {
 	void DataTCP::addDataType(std::function<void(T)> callback) {
 		auto header = DataType<T>::getHeader();
 		assert(!hasType<T>());
-
-		sizeType.resize(header + 1);
-		callbackType.resize(header + 1);
+		if (header >= sizeType.size() && header >= callbackType.size()) {
+			sizeType.resize(header + 1);
+			callbackType.resize(header + 1);
+		}
 
 		sizeType[header] = sizeof(T);
-		callbackType[header] = std::make_shared<CallbackType<T>>(callback);
+		if (callback)
+			callbackType[header] = std::make_shared<CallbackType<T>>(callback);
 
 	}
+
+
+	template<typename T, typename H>
+	void
+	DataTCP::addDataType(std::function<void(T)> callback, H header) {
+
+		auto header_ = static_cast<BaseDataType::Header>(header);
+		if (header_ >= sizeType.size() && header_ >= callbackType.size()) {
+			sizeType.resize(header_ + 1);
+			callbackType.resize(header_ + 1);
+		}
+		sizeType[header_] = sizeof(T);
+		if (callback)
+			callbackType[header_] = std::make_shared<CallbackType<T>>(callback);
+	}
+
 
 	template<typename T>
 	bool DataTCP::hasType() const {
 		auto header = DataType<T>::getHeader();
 		return header < sizeType.size() && header < callbackType.size();
-	}
-
-	template<typename T>
-	size_t DataTCP::getSizeOfType() {
-		assert(hasType<T>());
-		return sizeType[DataType<T>::getHeader()];
-	}
-
-	template<typename T>
-	DataTCP::Header DataTCP::getHeaderOfType() {
-		assert(hasType<T>());
-		return DataType<T>::getHeader();
 	}
 
 }

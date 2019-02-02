@@ -24,6 +24,10 @@ void intorino(Int id) {
 
 	std::cout << id.id << std::endl;
 }
+void intorinoe(int id) {
+
+	std::cout << id << std::endl;
+}
 void bufferino(Buffer buff) {
 	std::cout << buff.buffer << std::endl;
 
@@ -43,10 +47,12 @@ int main () {
 
 	std::function<void(char)> fa = std::bind(charino, std::placeholders::_1);
 	std::function<void(Int)> fi = std::bind(intorino, std::placeholders::_1);
+	std::function<void(int)> fie = std::bind(intorinoe, std::placeholders::_1);
 	std::function<void(Position)> fp = std::bind(positionino, std::placeholders::_1);
 
 	serverTCP.addDataType<char>(fa);
 	serverTCP.addDataType<Int>(fi);
+	serverTCP.addDataType<int>(fie);
 	serverTCP.addDataType<Position>(fp);
 
 	clientTCP.addDataType<char>(fa);

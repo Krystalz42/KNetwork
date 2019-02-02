@@ -33,6 +33,7 @@ void KNW::IOTCP::readSocketHeader() {
 void KNW::IOTCP::handleReadHeader(const boost::system::error_code &ec,
 									 size_t len) {
 
+	checkError(ec);
 	if (ec.value() == 0) {
 		BaseDataType::Header header;
 		std::memcpy(&header, buffer_data_.data(), len);
@@ -44,7 +45,7 @@ void KNW::IOTCP::handleReadHeader(const boost::system::error_code &ec,
 
 
 void KNW::IOTCP::readSocketData(BaseDataType::Header header) {
-
+//	log_success("%s Header: %d", __PRETTY_FUNCTION__, header);
 	boost::asio::async_read(
 			socket_,
 			boost::asio::buffer(buffer_data_, dataTCP_.getSizeOfHeader(header)),
@@ -52,15 +53,15 @@ void KNW::IOTCP::readSocketData(BaseDataType::Header header) {
 					&KNW::IOTCP::handleReadData,
 					this,
 					header,
-					boost::asio::placeholders::error,
-					boost::asio::placeholders::bytes_transferred
+					boost::asio::placeholders::error
 			));
 }
 
 
 void KNW::IOTCP::handleReadData(BaseDataType::Header header,
-								   const boost::system::error_code &ec,
-								   size_t len) {
+								   const boost::system::error_code &ec) {
+//	log_success("%s Header: %d error : %d", __PRETTY_FUNCTION__, header, ec.value());
+	checkError(ec);
 	if (ec.value() == 0) {
 		callback_(header, buffer_data_.data());
 	} else {
@@ -71,6 +72,7 @@ void KNW::IOTCP::handleReadData(BaseDataType::Header header,
 
 void
 KNW::IOTCP::handleWrite(const boost::system::error_code &ec, size_t len) {
+	checkError(ec);
 	if (ec.value() != 0)
 		std::cout << "error" << std::endl;
 }
@@ -83,3 +85,13 @@ void KNW::IOTCP::writeSocket(std::string data) {
 										 boost::asio::placeholders::bytes_transferred));
 }
 
+void KNW::IOTCP::checkError(boost::system::error_code const &error_code) {
+	if ((boost::asio::error::eof == error_code) ||
+		(boost::asio::error::connection_reset == error_code))
+	{
+		if (socket_.is_open()) {
+			socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both);
+			socket_.close();
+		}
+	}
+}

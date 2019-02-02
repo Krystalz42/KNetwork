@@ -20,7 +20,6 @@ namespace KNW {
 	template<typename T>
 	BaseDataType::Header DataType<T>::getHeader() {
 		static Header id = nextHeader++;
-		assert(id < eConfig::kMaxDataType);
 		return id;
 	}
 

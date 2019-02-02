@@ -4,21 +4,6 @@
 
 namespace KNW {
 
-	/** DataTCP **/
-
-	DataTCP::DataTCP() = default;
-
-	size_t DataTCP::getSizeOfHeader(DataTCP::Header header) {
-		return sizeType[header];
-	}
-
-	void DataTCP::sendDataToCallback(DataTCP::Header header, void *data) {
-		(*callbackType[header])(data);
-	}
-
-	DataTCP::~DataTCP() = default;
-
-
 	/** ServerTCP **/
 
 	ServerTCP::ServerTCP(unsigned short port) :
@@ -33,14 +18,41 @@ namespace KNW {
 		thread.detach();
 	}
 
+
+	void ServerTCP::accept(std::function<void(size_t)> callbackAccept) {
+		callbackAccept_ = callbackAccept;
+		asyncAccept();
+		thread = boost::thread(
+				boost::bind(&boost::asio::io_service::run, &io_service_));
+		thread.detach();
+	}
+
+
 	void ServerTCP::asyncAccept() {
 		acceptor_.async_accept([this](std::error_code ec, tcp::socket socket) {
-			connections.push_back(
-					std::make_shared<ConnectionTCP>(*this, std::move(socket)));
+			std::shared_ptr<ConnectionTCP> connection
+				= std::make_shared<ConnectionTCP>(*this, std::move(socket));
+			connections.push_back(connection);
+			std::cout << "New connection" << std::endl;
+			if (callbackAccept_) {
+				std::cout << "Callback" << std::endl;
+				callbackAccept_(std::distance(connections.begin(), std::find(connections.begin(), connections.end(), connection)));
+			}
+			asyncAccept();
 		});
 	}
 
-	ServerTCP::~ServerTCP() = default;
+	ServerTCP::~ServerTCP() {
+		connections.clear();
+		io_service_.stop();
+		acceptor_.cancel();
+		acceptor_.close();
+		thread.interrupt();
+	}
+
+	size_t ServerTCP::getSizeOfConnections() const {
+		return connections.size();
+	}
 
 	/** ConnectionTCP **/
 
@@ -59,6 +71,10 @@ namespace KNW {
 		iotcp->readSocketHeader();
 	}
 
+	bool ClientTCP::isConnect() const {
+		return socket_.is_open();
+	}
+
 	void ConnectionTCP::sendData(std::string data) {
 		iotcp->writeSocket(std::move(data));
 	}
@@ -68,6 +84,7 @@ namespace KNW {
 	}
 
 	void ClientTCP::connect(std::string dns, std::string port) {
+		std::cout << "socket : " << socket_.is_open() << std::endl;
 		try {
 			tcp::resolver::query query(dns, port);
 			tcp::resolver::iterator it = resolver.resolve(query);
@@ -91,6 +108,21 @@ namespace KNW {
 			: resolver(io),
 			  socket_(io) {
 		std::cout << "ClientTCP" << std::endl;
+	}
+
+
+	ClientTCP::~ClientTCP() {
+		try {
+			if (socket_.is_open()) {
+				socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both);
+				socket_.close();
+			}
+		} catch (std::exception const &e) {
+			std::cout << e.what() << std::endl;
+		}
+
+		thread.interrupt();
+		io.stop();
 	}
 
 }
