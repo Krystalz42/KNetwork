@@ -45,6 +45,7 @@ namespace KNW {
 	}
 
 	ClientTCP::~ClientTCP() {
+		std::cout << __PRETTY_FUNCTION__ << std::endl;
 		if (iotcp) {
 			boost::system::error_code ec_sock;
 			iotcp->getSocket_().shutdown(
