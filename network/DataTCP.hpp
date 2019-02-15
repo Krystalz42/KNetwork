@@ -4,16 +4,20 @@
 #include "BaseDataType.hpp"
 #include <functional>
 #include <vector>
-#include <network/Data.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 namespace KNW {
 
-	class DataTCP {
+	class DataTCP : public boost::enable_shared_from_this<KNW::DataTCP> {
 
 	public:
 		using Header = BaseDataType::Header;
 
-		DataTCP();
+		using b_sptr = boost::shared_ptr<DataTCP>;
+		using b_wptr = boost::weak_ptr<DataTCP>;
+
+		static b_sptr create();
+
 		DataTCP(DataTCP const &) = delete;
 
 		template<typename T>
@@ -26,16 +30,21 @@ namespace KNW {
 		bool hasType() const;
 
 		void sendDataToCallback(Header header, void *data);
-		size_t getSizeOfHeader(Header header);
+
+		int getSizeOfHeader(Header header);
+
 		~DataTCP();
 
+		template<typename T>
+		std::string serializeData(BaseDataType::Header header, T data);
+
 	private:
+		DataTCP();
 
 
 		class AbstractCallback {
 		public:
 			virtual ~AbstractCallback() = default;
-
 			virtual void operator()(void *) = 0;
 		};
 
@@ -45,22 +54,21 @@ namespace KNW {
 			explicit CallbackType(std::function<void(T)> function)
 					: function_(function) {}
 
-			void operator()(void *pVoid) override {
-				T data;
-				std::memcpy(static_cast<void *>(&data), pVoid, sizeof(T));
-				return function_(data);
-			}
+			virtual void operator()(void *pVoid) override;
 
 			std::function<void(T)> function_;
 		};
 
-		friend class ServerTCP;
-		friend class ConnectionTCP;
-		friend class ClientTCP;
-		bool setHeader_;
-		std::vector<size_t> sizeType;
+		std::vector<int> sizeType;
 		std::vector<std::shared_ptr<AbstractCallback>> callbackType;
 	};
+
+	template<typename T>
+	void DataTCP::CallbackType<T>::operator()(void *pVoid) {
+		T data;
+		std::memcpy(static_cast<void *>(&data), pVoid, sizeof(T));
+		return function_(data);
+	}
 
 
 	template<typename T>
@@ -68,7 +76,7 @@ namespace KNW {
 		auto header = DataType<T>::getHeader();
 		assert(!hasType<T>());
 		if (header >= sizeType.size() && header >= callbackType.size()) {
-			sizeType.resize(header + 1);
+			sizeType.resize(header + 1, -1);
 			callbackType.resize(header + 1);
 		}
 
@@ -85,7 +93,7 @@ namespace KNW {
 
 		auto header_ = static_cast<BaseDataType::Header>(header);
 		if (header_ >= sizeType.size() && header_ >= callbackType.size()) {
-			sizeType.resize(header_ + 1);
+			sizeType.resize(header_ + 1, -1);
 			callbackType.resize(header_ + 1);
 		}
 		sizeType[header_] = sizeof(T);
@@ -97,8 +105,21 @@ namespace KNW {
 	template<typename T>
 	bool DataTCP::hasType() const {
 		auto header = DataType<T>::getHeader();
-		return header < sizeType.size() && header < callbackType.size();
+		return header < sizeType.size() && header < callbackType.size() && sizeType[header] != -1;
 	}
+
+	template<typename T>
+	std::string
+	DataTCP::serializeData(BaseDataType::Header header, T data) {
+		std::string buffer;
+		buffer.append(reinterpret_cast<char *>(&header),
+					  sizeof(BaseDataType::Header));
+		buffer.append(reinterpret_cast<char *>(&data),
+					  static_cast<unsigned long>(getSizeOfHeader(
+							  header)));
+		return buffer;
+	}
+
 
 }
 #endif //NETWORK_DATATCP_HPP
