@@ -19,8 +19,11 @@ int main() {
 			try {
 
 				server = KNW::ServerTCP::create(ioManager);
+			sleep(1);
 				server->startServer("8000");
+				sleep(1);
 				server->getDataTCP().addDataType<std::string>(&test);
+				sleep(1);
 				server->startAsyncAccept();
 				sleep(1);
 				std::cout << "Server finsih count : " << server.use_count() << std::endl;
@@ -49,7 +52,7 @@ int main() {
 			client->getDataTCP_().addDataType<std::string>(&test);
 
 			std::cout << "connect : "<< server.use_count() << std::endl;
-			client->connect("127.0.0.1", 8000);
+			client->connect("localhost", 8000);
 			sleep(1);
 
 			std::cout << "client finsih count : "<< server.use_count() << std::endl;

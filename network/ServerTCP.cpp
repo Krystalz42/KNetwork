@@ -59,12 +59,12 @@ namespace KNW {
 	void ServerTCP::startServer(std::string port) noexcept {
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 		boost::asio::ip::tcp::resolver resolver(io_manager_.getIo());
-		boost::asio::ip::tcp::resolver::query query("127.0.0.1",
+		boost::asio::ip::tcp::resolver::query query("localhost",
 													boost::lexical_cast<std::string>(
 															port));
 		boost::asio::ip::tcp::endpoint endpoint = *resolver.resolve(query);
 		acceptor_->open(endpoint.protocol());
-		acceptor_->set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+		acceptor_->set_option(boost::asio::ip::tcp::acceptor::reuse_address(false));
 		acceptor_->bind(endpoint);
 		acceptor_->listen(boost::asio::socket_base::max_connections);
 	}
