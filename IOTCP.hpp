@@ -13,6 +13,9 @@ namespace KNW {
 
 	public:
 		IOTCP() = delete;
+		virtual ~IOTCP();
+		IOTCP &operator=(const IOTCP &) = delete;
+		IOTCP(const IOTCP &) = delete;
 
 		using b_sptr = boost::shared_ptr<IOTCP>;
 		using b_wptr = boost::weak_ptr<IOTCP>;
@@ -24,12 +27,12 @@ namespace KNW {
 				);
 
 		void writeSocket(std::string data);
+		void writeSyncSocket(std::string data);
+		void writeSocket(const void *pVoid, size_t len);
 
 		void readSocketHeader();
 
-		boost::asio::ip::tcp::socket &getSocket_();
-
-		virtual ~IOTCP();
+		const boost::shared_ptr<boost::asio::ip::tcp::socket> &getSocket_();
 
 		bool isConnect() const;
 	private:
@@ -54,6 +57,7 @@ namespace KNW {
 		boost::array<char, eConfigTCP::kMaxBufferSize> buffer_data_;
 		boost::shared_ptr<boost::asio::ip::tcp::socket> socket_;
 		std::function<void()> callbackDeadSocket_;
+		bool open_;
 	};
 }
 

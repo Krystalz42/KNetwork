@@ -5,6 +5,10 @@
 #include <functional>
 #include <vector>
 #include <boost/enable_shared_from_this.hpp>
+#include <iostream>
+#include <cores/Snake.hpp>
+
+
 
 namespace KNW {
 
@@ -18,7 +22,9 @@ namespace KNW {
 
 		static b_sptr create();
 
-		DataTCP(DataTCP const &) = delete;
+		~DataTCP() = default;
+		DataTCP &operator=(const DataTCP &) = delete;
+		DataTCP(const DataTCP &) = delete;
 
 		template<typename T>
 		void addDataType(std::function<void(T)> callback);
@@ -33,18 +39,18 @@ namespace KNW {
 
 		int getSizeOfHeader(Header header);
 
-		~DataTCP();
-
 		template<typename T>
 		std::string serializeData(BaseDataType::Header header, T data);
 
 	private:
-		DataTCP();
-
+		DataTCP() = default;
 
 		class AbstractCallback {
 		public:
+			AbstractCallback() = default;
 			virtual ~AbstractCallback() = default;
+			AbstractCallback &operator=(const AbstractCallback &) = delete;
+			AbstractCallback(const AbstractCallback &) = delete;
 			virtual void operator()(void *) = 0;
 		};
 
@@ -53,6 +59,11 @@ namespace KNW {
 		public:
 			explicit CallbackType(std::function<void(T)> function)
 					: function_(function) {}
+
+			CallbackType() = delete;
+			virtual ~CallbackType() = default;
+			CallbackType &operator=(const CallbackType &) = delete;
+			CallbackType(const CallbackType &) = delete;
 
 			virtual void operator()(void *pVoid) override;
 
@@ -65,8 +76,7 @@ namespace KNW {
 
 	template<typename T>
 	void DataTCP::CallbackType<T>::operator()(void *pVoid) {
-		T data;
-		std::memcpy(static_cast<void *>(&data), pVoid, sizeof(T));
+		T data = *reinterpret_cast<T*>(pVoid);
 		return function_(data);
 	}
 
@@ -112,11 +122,11 @@ namespace KNW {
 	std::string
 	DataTCP::serializeData(BaseDataType::Header header, T data) {
 		std::string buffer;
-		buffer.append(reinterpret_cast<char *>(&header),
-					  sizeof(BaseDataType::Header));
-		buffer.append(reinterpret_cast<char *>(&data),
-					  static_cast<unsigned long>(getSizeOfHeader(
-							  header)));
+		buffer.append(reinterpret_cast<const char *>(&header),
+				sizeof(BaseDataType::Header));
+		buffer.append(reinterpret_cast<const char *>(&data),
+				static_cast<unsigned long>(sizeof(T)));
+		assert(buffer.size() == (sizeof(T) + sizeof(BaseDataType::Header)));
 		return buffer;
 	}
 

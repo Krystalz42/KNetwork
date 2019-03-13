@@ -17,7 +17,12 @@ namespace KNW {
 		using b_sptr = boost::shared_ptr<ClientTCP>;
 		using b_wptr = boost::weak_ptr<ClientTCP>;
 
-		void connect(const std::string &host, uint16_t port);
+		ClientTCP() = default;
+		virtual ~ClientTCP();
+		ClientTCP &operator=(const ClientTCP &) = delete;
+		ClientTCP(const ClientTCP &) = delete;
+
+		void connect(const std::string host, const std::string port);
 
 		static b_sptr
 		create(IOManager &io_manager, std::function<void()> = nullptr);
@@ -25,12 +30,12 @@ namespace KNW {
 		bool isConnect() const;
 
 		template<typename T>
-		void writeDataToServer(T data);
+		void writeDataToServer(T &&data);
 
 		template<typename T, typename H>
-		void writeDataToServer(T data, H header);
+		void writeDataToServer(T &&data, H header);
 
-		virtual ~ClientTCP();
+		void disconnect();
 
 		DataTCP &getDataTCP_();
 
@@ -45,15 +50,17 @@ namespace KNW {
 	};
 
 	template<typename T, typename H>
-	void ClientTCP::writeDataToServer(T data, H header) {
-		assert(isConnect());
-		iotcp->writeSocket(dataTCP_->serializeData(header, data));
+	void ClientTCP::writeDataToServer(T &&data, H header) {
+		if (iotcp && dataTCP_)
+			iotcp->writeSocket(dataTCP_->serializeData(header, data));
 	}
 
 	template<typename T>
-	void ClientTCP::writeDataToServer(T data) {
+	void ClientTCP::writeDataToServer(T &&data) {
 		assert(dataTCP_->hasType<T>());
 		iotcp->writeSocket(dataTCP_->serializeData(DataType<T>::getHeader(), data));
 	}
+
+
 
 }

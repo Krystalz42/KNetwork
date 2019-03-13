@@ -16,7 +16,7 @@ namespace KNW {
 		return ptr;
 	}
 
-	void ClientTCP::connect(const std::string &host, uint16_t port) {
+	void ClientTCP::connect(const std::string host, const std::string port) {
 		boost::asio::ip::tcp::resolver resolver(io_manager_.getIo());
 		boost::shared_ptr<boost::asio::ip::tcp::socket> socket_(new boost::asio::ip::tcp::socket(io_manager_.getIo()));
 
@@ -27,13 +27,8 @@ namespace KNW {
 		boost::asio::ip::tcp::resolver::iterator iterator = resolver.resolve(
 				query);
 		ClientTCP::b_wptr wptr(shared_from_this());
-		boost::system::error_code ec;
-		socket_->connect(*iterator, ec);
-		if (!ec) {
-			iotcp = IOTCP::create(dataTCP_, socket_, callbackDeadConnection_);
-		} else {
-			std::cout << ec.message() << std::endl;
-		}
+		socket_->connect(*iterator);
+		iotcp = IOTCP::create(dataTCP_, socket_, callbackDeadConnection_);
 	}
 
 	bool ClientTCP::isConnect() const {
@@ -44,16 +39,17 @@ namespace KNW {
 		return *dataTCP_;
 	}
 
-	ClientTCP::~ClientTCP() {
-		std::cout << __PRETTY_FUNCTION__ << std::endl;
-		if (iotcp) {
-			boost::system::error_code ec_sock;
-			iotcp->getSocket_().shutdown(
-					boost::asio::ip::tcp::socket::shutdown_both, ec_sock);
-			iotcp->getSocket_().close(ec_sock);
+
+	void ClientTCP::disconnect() {
+		if (iotcp && iotcp->getSocket_() && iotcp->getSocket_()->is_open()) {
+			iotcp->writeSyncSocket(dataTCP_->serializeData(0, 0));
 		}
+		iotcp = nullptr;
 	}
 
+	ClientTCP::~ClientTCP() {
+		disconnect();
+	}
 
 }
 
