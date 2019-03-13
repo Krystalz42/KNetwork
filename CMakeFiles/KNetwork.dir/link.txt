@@ -1,2 +1,2 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libKNetwork.a  CMakeFiles/KNetwork.dir/BaseDataType.cpp.o CMakeFiles/KNetwork.dir/ClientTCP.cpp.o CMakeFiles/KNetwork.dir/DataTCP.cpp.o CMakeFiles/KNetwork.dir/IOManager.cpp.o CMakeFiles/KNetwork.dir/IOTCP.cpp.o CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libKNetwork.a
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/libKNetwork.a  CMakeFiles/KNetwork.dir/BaseDataType.cpp.o CMakeFiles/KNetwork.dir/ClientTCP.cpp.o CMakeFiles/KNetwork.dir/DataTCP.cpp.o CMakeFiles/KNetwork.dir/IOManager.cpp.o CMakeFiles/KNetwork.dir/IOTCP.cpp.o CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/libKNetwork.a

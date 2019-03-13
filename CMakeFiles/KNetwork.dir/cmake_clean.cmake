@@ -5,8 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/KNetwork.dir/IOManager.cpp.o"
   "CMakeFiles/KNetwork.dir/IOTCP.cpp.o"
   "CMakeFiles/KNetwork.dir/ServerTCP.cpp.o"
-  "libKNetwork.pdb"
-  "libKNetwork.a"
+  "../../lib/libKNetwork.pdb"
+  "../../lib/libKNetwork.a"
 )
 
 # Per-language clean rules from dependency scanning.

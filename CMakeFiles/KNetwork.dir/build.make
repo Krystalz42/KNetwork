@@ -43,97 +43,97 @@ RM = /usr/local/Cellar/cmake/3.13.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/alexandreroulin/KNetwork
+CMAKE_SOURCE_DIR = /Users/alexandreroulin/work/nibbler
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/alexandreroulin/KNetwork
+CMAKE_BINARY_DIR = /Users/alexandreroulin/work/nibbler
 
 # Include any dependencies generated for this target.
-include CMakeFiles/KNetwork.dir/depend.make
+include extern/KNetwork/CMakeFiles/KNetwork.dir/depend.make
 
 # Include the progress variables for this target.
-include CMakeFiles/KNetwork.dir/progress.make
+include extern/KNetwork/CMakeFiles/KNetwork.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include CMakeFiles/KNetwork.dir/flags.make
+include extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
 
-CMakeFiles/KNetwork.dir/BaseDataType.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/BaseDataType.cpp.o: BaseDataType.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/KNetwork.dir/BaseDataType.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/BaseDataType.cpp.o -c /Users/alexandreroulin/KNetwork/BaseDataType.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.o: extern/KNetwork/BaseDataType.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/BaseDataType.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/BaseDataType.cpp
 
-CMakeFiles/KNetwork.dir/BaseDataType.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/BaseDataType.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/BaseDataType.cpp > CMakeFiles/KNetwork.dir/BaseDataType.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/BaseDataType.cpp > CMakeFiles/KNetwork.dir/BaseDataType.cpp.i
 
-CMakeFiles/KNetwork.dir/BaseDataType.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/BaseDataType.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/BaseDataType.cpp -o CMakeFiles/KNetwork.dir/BaseDataType.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/BaseDataType.cpp -o CMakeFiles/KNetwork.dir/BaseDataType.cpp.s
 
-CMakeFiles/KNetwork.dir/ClientTCP.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/ClientTCP.cpp.o: ClientTCP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/KNetwork.dir/ClientTCP.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/ClientTCP.cpp.o -c /Users/alexandreroulin/KNetwork/ClientTCP.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.o: extern/KNetwork/ClientTCP.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/ClientTCP.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/ClientTCP.cpp
 
-CMakeFiles/KNetwork.dir/ClientTCP.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/ClientTCP.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/ClientTCP.cpp > CMakeFiles/KNetwork.dir/ClientTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/ClientTCP.cpp > CMakeFiles/KNetwork.dir/ClientTCP.cpp.i
 
-CMakeFiles/KNetwork.dir/ClientTCP.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/ClientTCP.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/ClientTCP.cpp -o CMakeFiles/KNetwork.dir/ClientTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/ClientTCP.cpp -o CMakeFiles/KNetwork.dir/ClientTCP.cpp.s
 
-CMakeFiles/KNetwork.dir/DataTCP.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/DataTCP.cpp.o: DataTCP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/KNetwork.dir/DataTCP.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/DataTCP.cpp.o -c /Users/alexandreroulin/KNetwork/DataTCP.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.o: extern/KNetwork/DataTCP.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/DataTCP.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/DataTCP.cpp
 
-CMakeFiles/KNetwork.dir/DataTCP.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/DataTCP.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/DataTCP.cpp > CMakeFiles/KNetwork.dir/DataTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/DataTCP.cpp > CMakeFiles/KNetwork.dir/DataTCP.cpp.i
 
-CMakeFiles/KNetwork.dir/DataTCP.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/DataTCP.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/DataTCP.cpp -o CMakeFiles/KNetwork.dir/DataTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/DataTCP.cpp -o CMakeFiles/KNetwork.dir/DataTCP.cpp.s
 
-CMakeFiles/KNetwork.dir/IOManager.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/IOManager.cpp.o: IOManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/KNetwork.dir/IOManager.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/IOManager.cpp.o -c /Users/alexandreroulin/KNetwork/IOManager.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.o: extern/KNetwork/IOManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/IOManager.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOManager.cpp
 
-CMakeFiles/KNetwork.dir/IOManager.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/IOManager.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/IOManager.cpp > CMakeFiles/KNetwork.dir/IOManager.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOManager.cpp > CMakeFiles/KNetwork.dir/IOManager.cpp.i
 
-CMakeFiles/KNetwork.dir/IOManager.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/IOManager.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/IOManager.cpp -o CMakeFiles/KNetwork.dir/IOManager.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOManager.cpp -o CMakeFiles/KNetwork.dir/IOManager.cpp.s
 
-CMakeFiles/KNetwork.dir/IOTCP.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/IOTCP.cpp.o: IOTCP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/KNetwork.dir/IOTCP.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/IOTCP.cpp.o -c /Users/alexandreroulin/KNetwork/IOTCP.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.o: extern/KNetwork/IOTCP.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/IOTCP.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOTCP.cpp
 
-CMakeFiles/KNetwork.dir/IOTCP.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/IOTCP.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/IOTCP.cpp > CMakeFiles/KNetwork.dir/IOTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOTCP.cpp > CMakeFiles/KNetwork.dir/IOTCP.cpp.i
 
-CMakeFiles/KNetwork.dir/IOTCP.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/IOTCP.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/IOTCP.cpp -o CMakeFiles/KNetwork.dir/IOTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/IOTCP.cpp -o CMakeFiles/KNetwork.dir/IOTCP.cpp.s
 
-CMakeFiles/KNetwork.dir/ServerTCP.cpp.o: CMakeFiles/KNetwork.dir/flags.make
-CMakeFiles/KNetwork.dir/ServerTCP.cpp.o: ServerTCP.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/KNetwork.dir/ServerTCP.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/ServerTCP.cpp.o -c /Users/alexandreroulin/KNetwork/ServerTCP.cpp
+extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.o: extern/KNetwork/CMakeFiles/KNetwork.dir/flags.make
+extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.o: extern/KNetwork/ServerTCP.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.o"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/KNetwork.dir/ServerTCP.cpp.o -c /Users/alexandreroulin/work/nibbler/extern/KNetwork/ServerTCP.cpp
 
-CMakeFiles/KNetwork.dir/ServerTCP.cpp.i: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KNetwork.dir/ServerTCP.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/KNetwork/ServerTCP.cpp > CMakeFiles/KNetwork.dir/ServerTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexandreroulin/work/nibbler/extern/KNetwork/ServerTCP.cpp > CMakeFiles/KNetwork.dir/ServerTCP.cpp.i
 
-CMakeFiles/KNetwork.dir/ServerTCP.cpp.s: cmake_force
+extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KNetwork.dir/ServerTCP.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/KNetwork/ServerTCP.cpp -o CMakeFiles/KNetwork.dir/ServerTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexandreroulin/work/nibbler/extern/KNetwork/ServerTCP.cpp -o CMakeFiles/KNetwork.dir/ServerTCP.cpp.s
 
 # Object files for target KNetwork
 KNetwork_OBJECTS = \
@@ -147,28 +147,28 @@ KNetwork_OBJECTS = \
 # External object files for target KNetwork
 KNetwork_EXTERNAL_OBJECTS =
 
-libKNetwork.a: CMakeFiles/KNetwork.dir/BaseDataType.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/ClientTCP.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/DataTCP.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/IOManager.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/IOTCP.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
-libKNetwork.a: CMakeFiles/KNetwork.dir/build.make
-libKNetwork.a: CMakeFiles/KNetwork.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alexandreroulin/KNetwork/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libKNetwork.a"
-	$(CMAKE_COMMAND) -P CMakeFiles/KNetwork.dir/cmake_clean_target.cmake
-	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KNetwork.dir/link.txt --verbose=$(VERBOSE)
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/build.make
+lib/libKNetwork.a: extern/KNetwork/CMakeFiles/KNetwork.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alexandreroulin/work/nibbler/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library ../../lib/libKNetwork.a"
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && $(CMAKE_COMMAND) -P CMakeFiles/KNetwork.dir/cmake_clean_target.cmake
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/KNetwork.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/KNetwork.dir/build: libKNetwork.a
+extern/KNetwork/CMakeFiles/KNetwork.dir/build: lib/libKNetwork.a
 
-.PHONY : CMakeFiles/KNetwork.dir/build
+.PHONY : extern/KNetwork/CMakeFiles/KNetwork.dir/build
 
-CMakeFiles/KNetwork.dir/clean:
-	$(CMAKE_COMMAND) -P CMakeFiles/KNetwork.dir/cmake_clean.cmake
-.PHONY : CMakeFiles/KNetwork.dir/clean
+extern/KNetwork/CMakeFiles/KNetwork.dir/clean:
+	cd /Users/alexandreroulin/work/nibbler/extern/KNetwork && $(CMAKE_COMMAND) -P CMakeFiles/KNetwork.dir/cmake_clean.cmake
+.PHONY : extern/KNetwork/CMakeFiles/KNetwork.dir/clean
 
-CMakeFiles/KNetwork.dir/depend:
-	cd /Users/alexandreroulin/KNetwork && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/alexandreroulin/KNetwork /Users/alexandreroulin/KNetwork /Users/alexandreroulin/KNetwork /Users/alexandreroulin/KNetwork /Users/alexandreroulin/KNetwork/CMakeFiles/KNetwork.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : CMakeFiles/KNetwork.dir/depend
+extern/KNetwork/CMakeFiles/KNetwork.dir/depend:
+	cd /Users/alexandreroulin/work/nibbler && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/alexandreroulin/work/nibbler /Users/alexandreroulin/work/nibbler/extern/KNetwork /Users/alexandreroulin/work/nibbler /Users/alexandreroulin/work/nibbler/extern/KNetwork /Users/alexandreroulin/work/nibbler/extern/KNetwork/CMakeFiles/KNetwork.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : extern/KNetwork/CMakeFiles/KNetwork.dir/depend
 

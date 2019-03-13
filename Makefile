@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.13.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/alexandreroulin/KNetwork
+CMAKE_SOURCE_DIR = /Users/alexandreroulin/work/nibbler
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/alexandreroulin/KNetwork
+CMAKE_BINARY_DIR = /Users/alexandreroulin/work/nibbler
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/KNetwork/CMakeFiles /Users/alexandreroulin/KNetwork/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/KNetwork/CMakeFiles 0
+	cd /Users/alexandreroulin/work/nibbler && $(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/work/nibbler/CMakeFiles /Users/alexandreroulin/work/nibbler/extern/KNetwork/CMakeFiles/progress.marks
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f CMakeFiles/Makefile2 extern/KNetwork/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexandreroulin/work/nibbler/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f CMakeFiles/Makefile2 extern/KNetwork/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,30 +97,32 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f CMakeFiles/Makefile2 extern/KNetwork/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f CMakeFiles/Makefile2 extern/KNetwork/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/alexandreroulin/work/nibbler && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named KNetwork
+# Convenience name for target.
+extern/KNetwork/CMakeFiles/KNetwork.dir/rule:
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f CMakeFiles/Makefile2 extern/KNetwork/CMakeFiles/KNetwork.dir/rule
+.PHONY : extern/KNetwork/CMakeFiles/KNetwork.dir/rule
 
-# Build rule for target.
-KNetwork: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 KNetwork
+# Convenience name for target.
+KNetwork: extern/KNetwork/CMakeFiles/KNetwork.dir/rule
+
 .PHONY : KNetwork
 
 # fast build rule for target.
 KNetwork/fast:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/build
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/build
 .PHONY : KNetwork/fast
 
 BaseDataType.o: BaseDataType.cpp.o
@@ -129,7 +131,7 @@ BaseDataType.o: BaseDataType.cpp.o
 
 # target to build an object file
 BaseDataType.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/BaseDataType.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.o
 .PHONY : BaseDataType.cpp.o
 
 BaseDataType.i: BaseDataType.cpp.i
@@ -138,7 +140,7 @@ BaseDataType.i: BaseDataType.cpp.i
 
 # target to preprocess a source file
 BaseDataType.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/BaseDataType.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.i
 .PHONY : BaseDataType.cpp.i
 
 BaseDataType.s: BaseDataType.cpp.s
@@ -147,7 +149,7 @@ BaseDataType.s: BaseDataType.cpp.s
 
 # target to generate assembly for a file
 BaseDataType.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/BaseDataType.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/BaseDataType.cpp.s
 .PHONY : BaseDataType.cpp.s
 
 ClientTCP.o: ClientTCP.cpp.o
@@ -156,7 +158,7 @@ ClientTCP.o: ClientTCP.cpp.o
 
 # target to build an object file
 ClientTCP.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ClientTCP.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.o
 .PHONY : ClientTCP.cpp.o
 
 ClientTCP.i: ClientTCP.cpp.i
@@ -165,7 +167,7 @@ ClientTCP.i: ClientTCP.cpp.i
 
 # target to preprocess a source file
 ClientTCP.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ClientTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.i
 .PHONY : ClientTCP.cpp.i
 
 ClientTCP.s: ClientTCP.cpp.s
@@ -174,7 +176,7 @@ ClientTCP.s: ClientTCP.cpp.s
 
 # target to generate assembly for a file
 ClientTCP.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ClientTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ClientTCP.cpp.s
 .PHONY : ClientTCP.cpp.s
 
 DataTCP.o: DataTCP.cpp.o
@@ -183,7 +185,7 @@ DataTCP.o: DataTCP.cpp.o
 
 # target to build an object file
 DataTCP.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/DataTCP.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.o
 .PHONY : DataTCP.cpp.o
 
 DataTCP.i: DataTCP.cpp.i
@@ -192,7 +194,7 @@ DataTCP.i: DataTCP.cpp.i
 
 # target to preprocess a source file
 DataTCP.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/DataTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.i
 .PHONY : DataTCP.cpp.i
 
 DataTCP.s: DataTCP.cpp.s
@@ -201,7 +203,7 @@ DataTCP.s: DataTCP.cpp.s
 
 # target to generate assembly for a file
 DataTCP.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/DataTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/DataTCP.cpp.s
 .PHONY : DataTCP.cpp.s
 
 IOManager.o: IOManager.cpp.o
@@ -210,7 +212,7 @@ IOManager.o: IOManager.cpp.o
 
 # target to build an object file
 IOManager.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOManager.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.o
 .PHONY : IOManager.cpp.o
 
 IOManager.i: IOManager.cpp.i
@@ -219,7 +221,7 @@ IOManager.i: IOManager.cpp.i
 
 # target to preprocess a source file
 IOManager.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOManager.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.i
 .PHONY : IOManager.cpp.i
 
 IOManager.s: IOManager.cpp.s
@@ -228,7 +230,7 @@ IOManager.s: IOManager.cpp.s
 
 # target to generate assembly for a file
 IOManager.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOManager.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOManager.cpp.s
 .PHONY : IOManager.cpp.s
 
 IOTCP.o: IOTCP.cpp.o
@@ -237,7 +239,7 @@ IOTCP.o: IOTCP.cpp.o
 
 # target to build an object file
 IOTCP.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOTCP.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.o
 .PHONY : IOTCP.cpp.o
 
 IOTCP.i: IOTCP.cpp.i
@@ -246,7 +248,7 @@ IOTCP.i: IOTCP.cpp.i
 
 # target to preprocess a source file
 IOTCP.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.i
 .PHONY : IOTCP.cpp.i
 
 IOTCP.s: IOTCP.cpp.s
@@ -255,7 +257,7 @@ IOTCP.s: IOTCP.cpp.s
 
 # target to generate assembly for a file
 IOTCP.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/IOTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/IOTCP.cpp.s
 .PHONY : IOTCP.cpp.s
 
 ServerTCP.o: ServerTCP.cpp.o
@@ -264,7 +266,7 @@ ServerTCP.o: ServerTCP.cpp.o
 
 # target to build an object file
 ServerTCP.cpp.o:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.o
 .PHONY : ServerTCP.cpp.o
 
 ServerTCP.i: ServerTCP.cpp.i
@@ -273,7 +275,7 @@ ServerTCP.i: ServerTCP.cpp.i
 
 # target to preprocess a source file
 ServerTCP.cpp.i:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ServerTCP.cpp.i
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.i
 .PHONY : ServerTCP.cpp.i
 
 ServerTCP.s: ServerTCP.cpp.s
@@ -282,7 +284,7 @@ ServerTCP.s: ServerTCP.cpp.s
 
 # target to generate assembly for a file
 ServerTCP.cpp.s:
-	$(MAKE) -f CMakeFiles/KNetwork.dir/build.make CMakeFiles/KNetwork.dir/ServerTCP.cpp.s
+	cd /Users/alexandreroulin/work/nibbler && $(MAKE) -f extern/KNetwork/CMakeFiles/KNetwork.dir/build.make extern/KNetwork/CMakeFiles/KNetwork.dir/ServerTCP.cpp.s
 .PHONY : ServerTCP.cpp.s
 
 # Help Target
@@ -323,6 +325,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/alexandreroulin/work/nibbler && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

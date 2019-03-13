@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libKNetwork.a"
+  "../../lib/libKNetwork.a"
 )
